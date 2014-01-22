@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width">
     <meta name="description" value="A handy reference guide and automated tool for upgrading from Bootstrap 2.3 to Bootstrap 3">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/github.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>
+    <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
     <script src="lib/dom_html.js"></script>
     <script src="src/upgrader.js"></script>
     <script src="src/app.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <style>
       textarea.form-control { font-size: 11px; font-family: monospace; }
       footer { margin: 30px 0; padding-top: 10px; border-top: 1px solid #ddd; }
@@ -58,7 +61,8 @@
           <div class="panel panel-success">
             <div class="panel-heading">Result HTML
             </div>
-            <textarea id="result" class="form-control" rows="16" ng-model="result"></textarea>
+            <textarea id="result" class="form-control" rows="16" ng-model="result">{{result}}</textarea>
+            <pre><code id="pretty"></code></pre>
           </div>
         </div>
       </div>

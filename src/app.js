@@ -7,6 +7,7 @@ function ConverterCtrl($scope) {
   $scope.runRules = function() {
     var report = BootstrapUpgrader.perform($scope.source, true);
     $scope.result = report.output;
+    $("#pretty").html(hljs.highlightAuto(report.output).value);
     for (var i = 0; i < report.results.length; i++) {
       var message = report.results[i] || "No Changes";
       $scope.rules[i].runMessage = message;

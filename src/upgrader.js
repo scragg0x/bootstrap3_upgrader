@@ -339,7 +339,15 @@
       }
     }
   ];
-  
+
+  function replaceAll(find, replace, str) {
+    return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+  }
+
+  function escapeRegExp(str) {
+      return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+  }
+
   var Upgrader = {
     rules: RULESET,
     perform: function(input, report) {
@@ -348,7 +356,7 @@
         var doc = (new DOMParser()).parseFromString(input, 'text/html');
         var fragment = false;
       } else {
-        var doc = $("<div id='upgrade-wrapper'>" + input + "</div>") 
+        var doc = $("<div id='upgrade-wrapper'>" + input + "</div>");
         var fragment = true;
       }
       
@@ -363,7 +371,11 @@
       } else {
         var output = "<!doctype html>\n" + doc.getElementsByTagName("html")[0].outerHTML;
       }
-      
+
+      output = replaceAll("&gt;", ">", output);
+      output = replaceAll("&lt;", "<", output);
+      output = replaceAll("&amp;", "&", output);
+
       if (report) {
         return {
           output: output,
